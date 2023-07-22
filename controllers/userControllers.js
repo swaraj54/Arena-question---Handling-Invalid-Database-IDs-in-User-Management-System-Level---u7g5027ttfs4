@@ -21,6 +21,7 @@ Status Code: 400
 */
 const getUserByID = handleAsyncErrors(async (req, res) => {
   const { id } = req.params;
+  if (!id) return AppError(res, 400, "Invalid user ID")
   // Add Error Handling Here, check if the id is valid
   const user = await User.findById(id);
   if (!user) {
